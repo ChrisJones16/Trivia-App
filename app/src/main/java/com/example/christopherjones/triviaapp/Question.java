@@ -1,6 +1,9 @@
 package com.example.christopherjones.triviaapp;
 
-public class Question {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Question implements Parcelable {
 
     //variables
     private String question;
@@ -17,6 +20,26 @@ public class Question {
         this.wrongAnswer2 = wrongAnswer2;
         this.wrongAnswer3 = wrongAnswer3;
     }
+
+    protected Question(Parcel in) {
+        question = in.readString();
+        correctAnswer = in.readString();
+        wrongAnswer = in.readString();
+        wrongAnswer2 = in.readString();
+        wrongAnswer3 = in.readString();
+    }
+
+    public static final Creator<Question> CREATOR = new Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel in) {
+            return new Question(in);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
 
     //Only Getters
     public String getQuestion() {
@@ -40,4 +63,17 @@ public class Question {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(question);
+        parcel.writeString(correctAnswer);
+        parcel.writeString(wrongAnswer);
+        parcel.writeString(wrongAnswer2);
+        parcel.writeString(wrongAnswer3);
+    }
 }

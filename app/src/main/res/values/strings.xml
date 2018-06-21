@@ -6,4 +6,7 @@
     <string name="second_wrong_answer">Second Wrong Answer</string>
     <string name="third_wrong_answer">Third Wrong Answer</string>
     <string name="save_question">Save Question</string>
+    <string name="wrong_answer_text">Wrong! Correct Answer is %1$s!</string>
+    <string name="correct">Correct!</string>
+    <string name="number_of_correct_answers">You answered %1$d questions correctly</string>
 </resources>
